@@ -68,3 +68,26 @@
 
 //change table name Callander to Calendar
 // ALTER TABLE Callander RENAME TO Calendar;
+
+// add a owed_expenses table with attributes user_ID, expense_ID, amountOwed
+// CREATE TABLE owed_expenses ( user_ID VARCHAR(255), expense_ID VARCHAR(255), amountOwed VARCHAR(255));
+
+// alter all attributes in events so that there is a _ between each word
+// ALTER TABLE events CHANGE eventID event_ID VARCHAR(255) not null;
+// ALTER TABLE events CHANGE eventName event_name VARCHAR(255);
+// ALTER TABLE events CHANGE eventDescription event_description VARCHAR(255);
+// ALTER TABLE events CHANGE eventDate event_date VARCHAR(255);
+// ALTER TABLE events CHANGE eventTime event_time VARCHAR(255);
+// ALTER TABLE events CHANGE eventLocation event_location VARCHAR(255);
+// ALTER TABLE events CHANGE eventCreator event_creator VARCHAR(255);
+
+//in the table owed_expenses add the foreiugn key user_ID referencing the users table and the foreign key expense_ID referencing the expenses table
+// ALTER TABLE owed_expenses ADD FOREIGN KEY (user_ID) REFERENCES users(user_ID);
+// ALTER TABLE owed_expenses ADD FOREIGN KEY (expense_ID) REFERENCES expenses(expense_ID);
+
+//make homes_creator a foreign key referencing the users table
+// ALTER TABLE Home ADD FOREIGN KEY (homes_creator) REFERENCES users(user_ID);
+
+// change the attributes firstname and lastname in the users table to first_name and last_name
+// ALTER TABLE users CHANGE firstname first_name VARCHAR(255);
+// ALTER TABLE users CHANGE lastname last_name VARCHAR(255);
