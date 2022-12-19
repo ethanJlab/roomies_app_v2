@@ -65,3 +65,6 @@
 
 // add a itemID and a completed (tinyint) attribute to the shopping_list_items table
 // ALTER TABLE shopping_list_items ADD itemID VARCHAR(255) not null;
+
+//change table name Callander to Calendar
+// ALTER TABLE Callander RENAME TO Calendar;
