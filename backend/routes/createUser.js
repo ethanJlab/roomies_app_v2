@@ -27,15 +27,10 @@ router.post('/', async (req, res) => {
         connection.query(`INSERT INTO Users (username, password, email, first_name, last_name, user_ID) VALUES ('${username}', '${encryptedPassword}', '${email}', '${first_name}', '${last_name}', uuid());`, function(err){
             if (err) {
                 error = err;
-
                 errorCode = 500;
                 return res.status(errorCode).json({ error, email, first_name, last_name, username });
-            }
-            
-        
-            return res.status(200).json({ error, email, first_name, last_name, username });
-        
-            
+            }        
+            return res.status(200).json({ error, email, first_name, last_name, username });   
         });    
     }else{
         return res.status(errorCode).json({ error, email, first_name, last_name, username });
@@ -46,30 +41,26 @@ router.post('/', async (req, res) => {
     // function return true if all checks pass, false if any check fails
     function formChecks(username, password, email, first_name, last_name, error, errorCode) {
         // check if username is taken
-        connection.query(`SELECT * FROM Users WHERE username = '${username}';`, function(result){
-            
+        connection.query(`SELECT * FROM Users WHERE username = '${username}';`, function(result){            
         
             if (result != null) {
                 error = 'Username is taken';
                 errorCode = 409;
                 res.status(errorCode).json({ error, email, first_name, last_name, username });
                 return false;
-            }
-        
+            }        
             
         });
 
         // check if email is taken
-        connection.query(`SELECT * FROM Users WHERE email = '${email}';`, function(result){
-            
+        connection.query(`SELECT * FROM Users WHERE email = '${email}';`, function(result){            
         
             if (result != null) {
                 error = 'Email is taken';
                 errorCode = 409;
                 res.status(errorCode).json({ error, email, first_name, last_name, username });
                 return false;
-            }
-        
+            }        
             
         });
 
