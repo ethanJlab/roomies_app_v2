@@ -91,3 +91,6 @@
 // change the attributes firstname and lastname in the users table to first_name and last_name
 // ALTER TABLE users CHANGE firstname first_name VARCHAR(255);
 // ALTER TABLE users CHANGE lastname last_name VARCHAR(255);
+
+// set default value for the attribute home_ID in the users table to UUID()
+// ALTER TABLE users CHANGE home_ID home_ID VARCHAR(255) DEFAULT UUID();
