@@ -4,6 +4,7 @@ var path = require('path');
 var cors = require('cors');
 
 var createUserRouter = require('./routes/createUser');
+var createHomeRouter = require('./routes/createHome');
 
 
 var app = express();
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/createUser', createUserRouter);
+app.use('/createHome', createHomeRouter);
 
 const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
