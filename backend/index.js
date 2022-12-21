@@ -7,6 +7,7 @@ var createUserRouter = require('./routes/createUser');
 var createHomeRouter = require('./routes/createHome');
 var createChoreListRouter = require('./routes/createChoreList');
 var createChoreRouter = require('./routes/createChore');
+var createShoppingListRouter = require('./routes/createShoppingList');
 
 
 var app = express();
@@ -25,6 +26,7 @@ app.use('/createUser', createUserRouter);
 app.use('/createHome', createHomeRouter);
 app.use('/createChoreList', createChoreListRouter);
 app.use('/createChore', createChoreRouter);
+app.use('/createShoppingList', createShoppingListRouter);
 
 const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
