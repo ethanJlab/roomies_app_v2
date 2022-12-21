@@ -94,3 +94,8 @@
 
 // set default value for the attribute home_ID in the users table to UUID()
 // ALTER TABLE users CHANGE home_ID home_ID VARCHAR(255) DEFAULT UUID();
+
+//alter the column name of member_ID in the member_of table to user_ID
+// ALTER TABLE member_of CHANGE member_ID user_ID VARCHAR(255);
+//delete all from the member_of table
+// DELETE FROM member_of;
