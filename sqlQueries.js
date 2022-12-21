@@ -99,3 +99,6 @@
 // ALTER TABLE member_of CHANGE member_ID user_ID VARCHAR(255);
 //delete all from the member_of table
 // DELETE FROM member_of;
+
+// make the list_creator column in the shopping_list table a foreign key referencing the Users table
+// ALTER TABLE shopping_list ADD FOREIGN KEY (list_creator) REFERENCES Users(user_ID);
