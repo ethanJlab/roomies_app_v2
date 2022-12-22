@@ -11,6 +11,8 @@ var createShoppingListRouter = require('./routes/createShoppingList');
 var addUserToHomeRouter = require('./routes/addUserToHome');
 var createShoppingListItemRouter = require('./routes/createShoppingListItem');
 var createExpenseListRouter = require('./routes/createExpenseList');
+var addExpenseRouter = require('./routes/addExpense');
+
 
 var app = express();
 var port = 3030;
@@ -32,6 +34,8 @@ app.use('/createShoppingList', createShoppingListRouter);
 app.use('/addUserToHome', addUserToHomeRouter);
 app.use('/addItemToShoppingList', createShoppingListItemRouter);
 app.use('/createExpenseList', createExpenseListRouter);
+app.use('/addExpense', addExpenseRouter);
+
 
 const server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
