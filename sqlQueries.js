@@ -102,3 +102,32 @@
 
 // make the list_creator column in the shopping_list table a foreign key referencing the Users table
 // ALTER TABLE shopping_list ADD FOREIGN KEY (list_creator) REFERENCES Users(user_ID);
+
+//set the default value of teh attribute to obtained in the shopping_list_items table to 0
+// ALTER TABLE shopping_list_items CHANGE obtained obtained TINYINT(1) DEFAULT 0;
+
+//make item_ID a primary key in the shopping_list_items table
+// ALTER TABLE shopping_list_items ADD PRIMARY KEY (item_ID);
+
+//add a quantity attribute to the shopping_list_items table type int
+// ALTER TABLE shopping_list_items ADD quantity INT;
+
+//make quantity default to 1
+// ALTER TABLE shopping_list_items CHANGE quantity quantity INT DEFAULT 1;
+
+//make it so quantity cannot be null
+// ALTER TABLE shopping_list_items CHANGE quantity quantity INT NOT NULL DEFAULT 1;
+
+//make it so quantity can be null
+// ALTER TABLE shopping_list_items CHANGE quantity quantity INT NULL DEFAULT 1;
+
+//delete all from shopping_list_items table
+// DELETE FROM shopping_list_items;
+
+//if quantity is null set it to 1
+// UPDATE shopping_list_items SET quantity = 1 WHERE quantity IS NULL;
+
+//create a trigger that if the quantity attribute in the shopping_list_items table is given is null set it to 1
+// CREATE TRIGGER quantity_trigger BEFORE INSERT ON shopping_list_items FOR EACH ROW IF NEW.quantity IS NULL THEN SET NEW.quantity = 1; END IF;
+
+
