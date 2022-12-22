@@ -130,4 +130,7 @@
 //create a trigger that if the quantity attribute in the shopping_list_items table is given is null set it to 1
 // CREATE TRIGGER quantity_trigger BEFORE INSERT ON shopping_list_items FOR EACH ROW IF NEW.quantity IS NULL THEN SET NEW.quantity = 1; END IF;
 
+//add expense_amount_paid attribute to the expenses table
+// ALTER TABLE expenses ADD expense_amount_paid VARCHAR(255);
+
 
