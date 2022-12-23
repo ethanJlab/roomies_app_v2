@@ -133,4 +133,27 @@
 //add expense_amount_paid attribute to the expenses table
 // ALTER TABLE expenses ADD expense_amount_paid VARCHAR(255);
 
+//add a calendar_ID attribute to the Calendar table
+// ALTER TABLE Calendar ADD calendar_ID VARCHAR(255) not null;
+
+//delete the event_ID attribute from the Calendar table
+// ALTER TABLE Calendar DROP COLUMN event_ID;
+
+//remove event_ID as the foreign key from the Calendar table
+// ALTER TABLE Calendar DROP FOREIGN KEY Calendar_ibfk_1;
+
+//make calendar_ID the primary key in the Calendar table
+// ALTER TABLE Calendar ADD PRIMARY KEY (calendar_ID);
+
+// add calendar_ID to the events table
+// ALTER TABLE events ADD calendar_ID VARCHAR(255) not null;
+
+//add calendar_ID as a foreign key in the events table referencing the Calendar table
+// ALTER TABLE events ADD FOREIGN KEY (calendar_ID) REFERENCES Calendar(calendar_ID);
+
+//create a trigger that when a house is inserted into the Home table it will automatically create a calendar for that house with the calendar_ID being UUID() and the house_ID being the home_ID of the house
+// CREATE TRIGGER calendar_trigger AFTER INSERT ON Home FOR EACH ROW INSERT INTO Calendar (calendar_ID, house_ID) VALUES (UUID(), NEW.home_ID);
+
+//delete the calendar_trigger
+// DROP TRIGGER calendar_trigger;
 
