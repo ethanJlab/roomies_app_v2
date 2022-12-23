@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         return res.status(errorCode).json({ error });
     }
 
-    connection.query('INSERT INTO Homes (home_name, home_description, home_creator, home_ID) VALUES (?, ?, (SELECT user_ID from Users WHERE username = ?), UUID())', [home_name, home_description, username], (err, results, fields) => {
+    connection.query('INSERT INTO Homes (home_name, home_description, home_creator, home_ID) VALUES (?, ?, (SELECT user_ID from Users WHERE username = ?), UUID());', [home_name, home_description, username], (err, results, fields) => {
         if (err) {
             error = err;
             errorCode = 409;
@@ -38,3 +38,12 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
+
+// json for example request
+/*
+{
+    "home_name": "test",
+    "home_description": "test",
+    "username": "Tarova"
+}
+*/
