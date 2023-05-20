@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     }
 
     // create expense
-    connection.query('INSERT INTO expenses (expense_name, expense_list_ID, expense_amount, expense_creator, expense_due_date, expense_amount_paid, expense_ID) VALUES (?, ?, ?, (SELECT user_ID from Users WHERE username = ?), ?, ?, UUID())', [expense_name, expense_list_ID, expense_amount, username, expense_due_date, expense_amount_paid], (err, results, fields) => {
+    createExpense(expense_name, expense_list_ID, expense_amount, username, expense_due_date, expense_amount_paid, (err, results, fields) => {
         if (err) {
             error = err;
             errorCode = 409;
@@ -42,6 +42,10 @@ router.post('/', async (req, res) => {
     });
 
 });
+
+function createExpense(expense_name, expense_list_ID, expense_amount, username, expense_due_date, expense_amount_paid, callback) {
+    connection.query('INSERT INTO expenses (expense_name, expense_list_ID, expense_amount, expense_creator, expense_due_date, expense_amount_paid, expense_ID) VALUES (?, ?, ?, (SELECT user_ID from Users WHERE username = ?), ?, ?, UUID())', [expense_name, expense_list_ID, expense_amount, username, expense_due_date, expense_amount_paid], callback);
+}
 module.exports = router;
 
 // generate a json for the expense list
